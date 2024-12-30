@@ -1,0 +1,26 @@
+The following CSS code snippet demonstrates a common issue where specificity conflicts lead to unexpected styling behavior:
+
+```css
+div {
+  color: blue;
+}
+
+.special-div {
+  color: red;
+}
+
+#id-div {
+  color: green;
+}
+
+#id-div.special-div {
+  color: purple;
+}
+
+```
+
+If you apply all these selectors to an element with both the class `special-div` and the id `id-div`, the conflicting styles will occur. CSS rules are applied based on specificity rules. The rule with the highest specificity will win.
+
+In this example, the `#id-div.special-div` selector has the highest specificity because it includes both an ID and a class selector. Thus, it will override the others and render the text purple instead of blue, red or green as expected.
+
+This bug can be difficult to track down, particularly in complex CSS. You may expect the color to be red or green, but the unexpected purple color results from the combined selectors.
